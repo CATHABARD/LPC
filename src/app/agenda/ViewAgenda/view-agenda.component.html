@@ -1,0 +1,21 @@
+<div>
+    <h5>{{titre}} pour les 10 prochains jours.</h5>
+</div>
+<br/>
+<table>
+  @for (agenda of agendas | selectAgendasAfterDate:dateCourante ; track $index; let i = $index) {
+    @if(i%2==0) {
+    <div class="lignes-paires">
+      &nbsp; {{i + 1}} &nbsp; Le &nbsp; {{agenda.date.toLocaleDateString()}} &nbsp; à &nbsp; {{agenda.heure}} &nbsp; il y a &nbsp; {{agenda.texte}}
+    </div>
+    } @else {
+      <div class="lignes-impaires">
+         &nbsp; {{i + 1}} &nbsp; Le &nbsp; {{agenda.date.toLocaleDateString()}} &nbsp; à &nbsp; {{agenda.heure}} &nbsp; il y a &nbsp; {{agenda.texte}}
+      </div>
+      }
+    <hr>
+  }
+  @empty {
+    <p>Aucun évènement trouvé</p>
+  }
+</table>

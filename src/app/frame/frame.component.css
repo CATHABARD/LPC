@@ -1,0 +1,57 @@
+.sidenav-container {
+    height: 100%;
+  }
+  
+  .sidenav {
+    width: 370px;
+  }
+  
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+  
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .button-row button,
+  .button-row a {
+    margin-right: 12px;
+  }
+  
+  .menu-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .titre {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .h1 {
+    color: rgb(240, 240, 10);
+    font-size:small;
+  }
+
+  .format_entete {
+    background-color: #141217;
+    color: yellow;
+    text-align: center;
+    height: 20%;
+  }
+
+  .liste-liens {
+    margin-top: 30%;
+    margin-left: 5%;
+    font-size: x-large;
+    color:lightgrey;
+  }
+
+  .lien {
+    margin-top: 2%;
+    margin-left: 10%;
+    font-size: large;
+    color: cyan;
+  }

@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <form [formGroup]="agendasForm" (ngSubmit)="onSubmit()">
+        <table [cellSpacing]="" [cellPadding]="20" style="width: 40%;">
+            <tr style="align-items: left;">
+                <td>
+                    <label>Date :</label>
+                </td>
+                <td>
+                    <input type="date" name="date" id="date" formControlName="date" placeholder="Date" />
+                </td>
+            </tr>
+            <tr style="align-items: left;">
+                <td>
+                    <label>Heure :</label>
+                </td>
+                <td>
+                    <input type="time" name="heure" matInput formControlName="heure" placeholder="Heure" />
+                </td>
+            </tr>
+            <tr style="align-items: right;">
+                <td>
+                    <label>Définition :</label>
+                </td>
+                <td>
+                    <input matInput formControlName="texte" placeholder="Texte" name="texte" [maxLength]="50" />
+                </td>
+            </tr>
+            <tr style="align-items: right;">
+                <td>
+                    <div class="button-wrapper" *ngIf="agendasForm.valid">
+                        <button mat-flat-button color="primary" type="submit">Valider</button>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</div>

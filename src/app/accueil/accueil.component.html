@@ -1,0 +1,37 @@
+<mat-tab-group (selectedTabChange)="onTabChange($event)">
+
+    <td [width]="700" [height]="600">
+    <!--
+      <ngb-carousel #ngCarousel
+        [showNavigationArrows]="false" 
+        [showNavigationIndicators]="false"
+        [interval]="3000"
+        [keyboard]="false"
+        [pauseOnHover]="true"
+        [wrap]="true"
+        [activeId]="'1'"
+        [attr.aria-activedescendant] = "">
+        <ng-template  ngbSlide *ngFor="let c of photosCarousel">
+          <div class="picsum-img-wrapper">
+            <img style="width: 600px;" src={{photos}} alt="">>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    -->
+    </td>
+  
+  <!--Onglet Agenda-->
+  <mat-tab label={{onglet1}}>
+    <app-meteo></app-meteo>
+    <app-view-liens></app-view-liens>
+  </mat-tab>
+  <!--Onglet Agenda-->
+  <mat-tab label={{onglet2}}>
+    <app-view-agenda></app-view-agenda>
+  </mat-tab>
+  <!--Onglet Photos-->
+  <mat-tab label={{onglet3}}>
+    <app-view-photos></app-view-photos>
+  </mat-tab>
+</mat-tab-group>
+  

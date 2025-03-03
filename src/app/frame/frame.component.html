@@ -1,0 +1,46 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" 
+  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+  [mode]="(isHandset$ | async) ? 'over' : 'side'" 
+  [opened]="!(isHandset$ | async)">
+  <br/>
+    <div class="liste-liens">
+      <!--Menu gauche-->
+      <div *ngIf="selectedOnglet == 0">
+        <button mat-raised-button (click)="onAddLien()" color="primary">Ajouter un lien</button>
+      </div>
+      <div *ngIf="selectedOnglet == 1">
+        <button  mat-raised-button (click)="onAddAgenda()" color="primary">Ajouter une date à l'agenda</button>
+      </div>
+
+    </div>
+  </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Menu latéral">menu</mat-icon>
+        </button>
+        <div class="titre"><button mat-button (click)="onGoAccueil()">petit Cathabard</button></div>
+        <div class="button-row">
+          <button mat-raised-button (click)="onNewCompte()" color="accent">
+            Créer un compte
+          </button>
+        </div>
+        <div></div>
+        <div>
+          <button mat-raised-button (click)="onConnectDialog()" *ngIf="!isAuth" color="accent">Me connecter</button>
+          <button mat-raised-button (click)="onDisconnect()" *ngIf="isAuth" color="accent">Me déconnecter</button>
+          <button mat-flat-button (click)="onAdmin()" *ngIf="isAdmin" color="accent">Administration</button>
+          <button mat-raised-button *ngIf="isAuth" color="accent">{{ this.authentificationService.getCurrentUserName()}}</button>
+          <button mat-raised-button  *ngIf="!isAuth" color="light"></button>
+        </div>
+        <div></div>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

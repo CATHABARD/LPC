@@ -1,0 +1,13 @@
+<div class="container">
+    <h5>{{titre}}</h5>
+</div>
+<br/>
+<mat-grid-list cols="4" rowHeight="9:1px">
+    @for (lien of liens; track lien.texte ; let idx = $index) {
+        <mat-grid-tile>
+            <a href={{lien.adresse}} target="_blank">{{lien.texte}}</a>
+        </mat-grid-tile>
+    }
+  </mat-grid-list>
+
+

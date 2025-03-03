@@ -1,0 +1,17 @@
+.div-frame {
+    height: 400px;
+    width: 95%;
+    margin-left: 5%;
+}
+
+.lignes-paires {
+    background-color: black;
+    height: 25px;
+    font-size: 14px;
+}
+
+.lignes-impaires {
+    background-color: navy;
+    height: 25px;
+    font-size: 14px;
+}

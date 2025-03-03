@@ -1,0 +1,57 @@
+.div-liens {
+    text-align: left;
+}
+
+.lignes-paires {
+    margin: 0px;
+}
+
+.lignes-impaires {
+    background-color: #19191F;
+    margin: 0px;
+}
+
+hr {
+    height: 2px;;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.mat-elevation-z8 {
+    width: 100%;
+}
+
+.tab-pages {
+    margin: 5px;
+    font-size: large;
+}
+
+div#page-liens1 {
+    float:left;
+	width:33%;
+	height:100%;
+}
+
+div#page-liens2 {
+    float:left;
+	width:33%;
+	height:100%;
+}
+
+div#page-liens3 {
+    float:left;
+	width:33%;
+	height:100%;
+}
+
+h6 {
+    font-size: 14px;
+    color: yellow;;
+}
+
+.form-fields {
+    display: flex;
+    align-items: flex-start;
+    vertical-align: top;
+    width: 50%;
+  }
