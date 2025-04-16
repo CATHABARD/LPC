@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Photo } from '../../Modeles/photo';
+import { Photo } from '../../Models/photo';
 import { environment } from '../../../environments/environment'
 
 @Injectable({

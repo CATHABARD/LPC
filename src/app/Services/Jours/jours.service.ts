@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Jour } from '../..//Modeles/Jour';
+import { Jour } from '../../Models/Jour';
 import { environment } from '../../../environments/environment';
 
 

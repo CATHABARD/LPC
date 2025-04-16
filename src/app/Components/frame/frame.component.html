@@ -6,13 +6,12 @@
   <br/>
     <div class="liste-liens">
       <!--Menu gauche-->
-      <div *ngIf="selectedOnglet == 0">
+      <div *ngIf="selectedOnglet == 2">
         <button mat-raised-button (click)="onAddLien()" color="primary">Ajouter un lien</button>
       </div>
-      <div *ngIf="selectedOnglet == 1">
+      <div *ngIf="selectedOnglet == 3">
         <button  mat-raised-button (click)="onAddAgenda()" color="primary">Ajouter une date à l'agenda</button>
       </div>
-
     </div>
   </mat-sidenav>
     <mat-sidenav-content>

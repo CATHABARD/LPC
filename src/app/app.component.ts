@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { FrameComponent } from "./frame/frame.component";
+import { FrameComponent } from "./Components/frame/frame.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FrameComponent, RouterOutlet],
+  imports: [FrameComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

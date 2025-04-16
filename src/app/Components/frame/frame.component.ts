@@ -2,15 +2,14 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { Component, Inject, inject, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav'
-import { MatIcon } from '@angular/material/icon';
 import { MatToolbar } from '@angular/material/toolbar';
 import { Router, ActivatedRoute, RouterOutlet } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { MatTreeModule} from '@angular/material/tree';
 import { MatIconModule} from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button';
-import { ToolsService } from '../Services/Tools/tools.service';
-import { AuthentificationsService } from '../Services/Authentifications/authentifications.service';
+import { ToolsService } from '../../Services/Tools/tools.service';
+import { AuthentificationsService } from '../../Services/Authentifications/authentifications.service';
 
 @Component({
   selector: 'app-frame',

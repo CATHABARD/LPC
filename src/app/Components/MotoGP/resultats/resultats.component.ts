@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Resultatat } from '../../Modeles/MotoGP';
+import { Resultatat } from '../../../Models/MotoGP';
 
 @Component({
   selector: 'app-resultats',

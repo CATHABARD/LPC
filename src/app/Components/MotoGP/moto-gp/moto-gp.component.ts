@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MotoGPService } from '../../Services/MotoGP/moto-gp.service';
+import { MotoGPService } from '../../../Services/MotoGP/moto-gp.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
-import { Saison } from '../../Modeles/MotoGP';
-import { Categorie, Epreuve, EpreuveFutures, Resultatat, Sprint } from '../../Modeles/MotoGP';
+import { Saison } from '../../../Models/MotoGP';
+import { Categorie, Epreuve, Resultatat, Sprint } from '../../../Models/MotoGP';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { ResultatsComponent } from '../resultats/resultats.component';
@@ -46,30 +46,6 @@ export class MotoGPComponent implements OnInit {
   public titresColumns: string[] = ['Du', 'Au', 'Circuit', 'Pays'];
   public displayedColumns: string[] = ['date_start', 'date_end', 'circuit_name', 'country_name'];
   public columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
-/*
-  public epreuvesFutures: EpreuveFutures = new EpreuveFutures(0, 
-    [{ 
-      id: 0, 
-      shortname: "", 
-      name: "", 
-      hashtag: "",
-      circuit: "", 
-      country_code: "", 
-      country: "", start_date: "", 
-      end_date: "", 
-      local_tz_offset: 0, 
-      tes: 0, has_timing: 0, 
-      friendly_name: "", 
-      dates: "", 
-      key_session_times: 
-      [{ 
-          session_shortname: "", 
-          session_name: "", 
-          start_datetime_utc: "" 
-      }],
-      last_session_end_time: ""
-    }]);*/
-  //public displayedColumnsFutures: string[] = ['season'];
 
   ngOnInit(): void {
 
@@ -140,23 +116,10 @@ export class MotoGPComponent implements OnInit {
   }
 
   toggle(element: Epreuve) {
+    this.resultats = [];
     this.epreuve = this.isExpanded(element) ? null : element;
   }
-/*
-  resultats(idCategorie: string, idElement: string) { 
-    this.motoGP.getSessions(this.saison.year, idCategorie, idElement).subscribe({
-      next: (data) => {
-        this.sessions = data;
-        console.log('Sessions récupérées avec succès! ' + this.sessionsSprint.length)
-      },
-      error: (error) => 
-        console.error('Erreur lors de la récupération des sessions:\r', error),
-      complete: () => {
-        console.log('Sessions récupérées avec succès! ')
-      }
-    });
-  }
-*/
+
   resultat(idCategorie: string, idElement: string) { 
     this.sessions = [];
     this.resultats = [];

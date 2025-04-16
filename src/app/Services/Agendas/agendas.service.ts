@@ -1,6 +1,6 @@
 import { inject, Inject, Injectable, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Agenda } from '../../Modeles/Agenda';
+import { Agenda } from '../../Models/Agenda';
 import { Observable, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 

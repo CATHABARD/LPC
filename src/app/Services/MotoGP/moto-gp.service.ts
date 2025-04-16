@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Saison } from '../../Modeles/MotoGP';
-import { Categorie, Epreuve, EpreuveFutures, Resultatat, Sprint } from '../../Modeles/MotoGP';
+import { Saison } from '../../Models/MotoGP';
+import { Categorie, Epreuve, EpreuveFutures, Resultatat, Sprint } from '../../Models/MotoGP';
 
 @Injectable({
   providedIn: 'root'

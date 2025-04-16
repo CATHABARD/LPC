@@ -1,32 +1,19 @@
 import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { MatTab, MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs'
 import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
-import { MatGridList, MatGridTile } from '@angular/material/grid-list';
-import { MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { Subscription } from 'rxjs';
-import { Photo } from '../Modeles/photo';
-import { PhotosService } from '../Services/Photos/PhotosService';
-import { LiensService } from '../Services/Liens/liens-service';
-import { Lien } from '../Modeles/Lien';
-import { AgendasService } from '../Services/Agendas/agendas.service';
-import { Agenda } from '../Modeles/Agenda';
+import { Photo } from '../../Models/photo';
+import { LiensService } from '../../Services/Liens/liens-service';
+import { Agenda } from '../../Models/Agenda';
 import { MatTableModule } from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { SelectAgendasAfterDatePipe } from '../Pipes/Agendas/select-agendas-after-date.pipe';
-import { EvenementsService } from '../Services/Evenements/evenements.service';
-import { Evenement } from '../Modeles/Evenement';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { MatOption, MatSelect } from '@angular/material/select';
-import { JoursService } from '../Services/Jours/jours.service';
-import { Jour } from '../Modeles/Jour';
-import { ToolsService } from '../Services/Tools/tools.service';
-import { ActuComponent } from "../actu/actu.component";
+import { Evenement } from '../../Models/Evenement';
+import { Jour } from '../../Models/Jour';
+import { ToolsService } from '../../Services/Tools/tools.service';
 import { ViewAgendaComponent } from '../agenda/ViewAgenda/view-agenda.component'
-import { ViewLiensComponent } from '../Liens/ViewLiens/view-liens.component';
-import { ViewPhotosComponent } from '../Photos/ViewPhotos/view-photos.component';
-import { Observable } from 'rxjs';
-import { MeteoComponent } from "../Meteo/meteo/meteo.component";
+import { ViewLiensComponent } from '../../Components/Liens/ViewLiens/view-liens.component';
+import { ViewPhotosComponent } from '../../Components/Photos/ViewPhotos/view-photos.component';
+import { MeteoComponent } from "../../Components/Meteo/meteo/meteo.component";
 import { MotoGPComponent } from "../MotoGP/moto-gp/moto-gp.component";
 
 
@@ -35,7 +22,7 @@ import { MotoGPComponent } from "../MotoGP/moto-gp/moto-gp.component";
   standalone: true,
   imports: [
     CommonModule,
-    //NgbCarousel,
+    NgbCarousel,
     MatTabGroup,
     MatTab,
     MatTableModule,

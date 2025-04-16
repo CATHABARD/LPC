@@ -1,7 +1,6 @@
-import { Component, Inject, input, Input, OnInit } from '@angular/core';
-import { ViewAgendaComponent } from "../agenda/ViewAgenda/view-agenda.component";
-import { ViewPhotosComponent } from "../Photos/ViewPhotos/view-photos.component";
-import { Evenement } from '../Modeles/Evenement';
+import { Component, Input, OnInit } from '@angular/core';
+import { ViewAgendaComponent } from "../Components/agenda/ViewAgenda/view-agenda.component";
+import { ViewPhotosComponent } from "../Components/Photos/ViewPhotos/view-photos.component";
 
 @Component({
   selector: 'app-actu',

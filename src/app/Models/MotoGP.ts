@@ -162,7 +162,7 @@ export class Resultatat{
         rider_number: number = 0,
         riders_api_uuid: string = "",
         team_id: string = "",
-        team_name: string = "",
+        public team_name: string = "",
         team_legacy_id: number = 0,
         team_season_id: string = "",
         team_season_year: number = 0,

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 //import { ErrorHandlerService } from '../../../Services/Error-Handlers/error-handler.service';
 //import { OwnerRepositoryService } from './../../shared/services/owner-repository.service';
 import { FormGroup, Validators } from '@angular/forms';
-import { Agenda } from '../../../Modeles/Agenda';
+import { Agenda } from '../../../Models/Agenda';
 //import { HttpErrorResponse } from '@angular/common/http';
 //import { AgendaForCreation } from '../../../Modeles/AgendaForCreation';
 import { ThemePalette } from '@angular/material/core';

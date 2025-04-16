@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, inject } from '@angular/core';
-import { AgendasService } from '../../Services/Agendas/agendas.service';
-import { Agenda } from '../../Modeles/Agenda';
-import { SelectAgendasAfterDatePipe } from '../../Pipes/Agendas/select-agendas-after-date.pipe';
+import { AgendasService } from '../../../Services/Agendas/agendas.service';
+import { Agenda } from '../../../Models/Agenda';
+import { SelectAgendasAfterDatePipe } from '../../../Pipes/Agendas/select-agendas-after-date.pipe';
 
 @Component({
   selector: 'app-view-agenda',

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MeteoService } from '../../Services/Meteo/meteo.service';
+import { MeteoService } from '../../../Services/Meteo/meteo.service';
 //import { AgCharts } from 'ag-charts-angular';
 import {
   AgBarSeriesOptions,
@@ -9,7 +9,7 @@ import {
   time,
 } from "ag-charts-community";
 import { fetchWeatherApi } from 'openmeteo';
-import { Meteo } from '../../Modeles/Meteo';
+import { Meteo } from '../../../Models/Meteo';
 import { CommonModule } from '@angular/common';
 import { MatGridList, MatGridListModule, MatGridTile } from '@angular/material/grid-list';
 import { MatCard, MatCardSubtitle, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
