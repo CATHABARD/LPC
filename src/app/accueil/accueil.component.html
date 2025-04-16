@@ -20,17 +20,20 @@
     -->
     </td>
   
-  <!--Onglet Agenda-->
+  <!--Onglet Meteo-->
   <mat-tab label={{onglet1}}>
-    <app-meteo></app-meteo>
+    <app-moto-gp></app-moto-gp>
+  </mat-tab>
+  <mat-tab label={{onglet2}}>    
     <app-view-liens></app-view-liens>
+    <app-meteo></app-meteo>
   </mat-tab>
   <!--Onglet Agenda-->
-  <mat-tab label={{onglet2}}>
+  <mat-tab label={{onglet3}}>
     <app-view-agenda></app-view-agenda>
   </mat-tab>
   <!--Onglet Photos-->
-  <mat-tab label={{onglet3}}>
+  <mat-tab label={{onglet4}}>
     <app-view-photos></app-view-photos>
   </mat-tab>
 </mat-tab-group>

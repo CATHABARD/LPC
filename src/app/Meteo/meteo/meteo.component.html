@@ -1,5 +1,5 @@
 <div class="container">
-    <h4>{{titre}}</h4>
+    <h5>{{titre}}</h5>
 </div>
 <br/>
 <!--
@@ -10,31 +10,27 @@
    </ag-charts>,
 -->
 
-<mat-grid-list cols="6" rowHeight="140" gutterSize="10px">
+<mat-grid-list cols="4" rowHeight="210" gutterSize="5px">
   <div *ngFor="let m of meteos; let i = index">
-    <div *ngIf= "i % 4 == 0">
+    <div *ngIf= "i % 6 == 0">
       <mat-grid-tile *ngIf="i < maxVisible">
       <mat-card>
-        <mat-card-header> 
-          <mat-card-title><h6>{{m.time?.toLocaleDateString()}}</h6></mat-card-title> 
-        </mat-card-header> 
-        <mat-card-content> 
+        <mat-card-subtitle>
+          <h6>{{m.day}}</h6>
+        </mat-card-subtitle> 
+        <mat-card-subtitle> 
           <h6>{{m.time?.toLocaleTimeString()}} h</h6>
-        </mat-card-content>
+        </mat-card-subtitle> 
+        <mat-card-subtitle> 
+          <p *ngIf="m.rain > 1">pluie {{m.rain.toFixed(0)}} mm</p>
+        </mat-card-subtitle> 
+        <mat-card-content></mat-card-content>
+            <img src={{m.icone}} style="max-width: 20%;width: 20%;">
         <mat-card-content>
-          <div style="max-width: 40%;">
-            <img mat-card-image src={{m.icone}}>
-          </div>
-        </mat-card-content>
-        <mat-card-content>
-          <h5>{{m.temperature2m.toPrecision(2)}} °C</h5>
-        </mat-card-content>
-        <mat-card-content>
-          <h5>{{m.windDirection10m.toPrecision(2)}} X</h5>
+          {{m.temperature2m.toFixed(0)}} °C
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </div>
 </div>
 </mat-grid-list>
-http://localhost:64309/icones/soleil.jpg

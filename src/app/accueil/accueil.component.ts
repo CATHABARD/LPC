@@ -27,6 +27,7 @@ import { ViewLiensComponent } from '../Liens/ViewLiens/view-liens.component';
 import { ViewPhotosComponent } from '../Photos/ViewPhotos/view-photos.component';
 import { Observable } from 'rxjs';
 import { MeteoComponent } from "../Meteo/meteo/meteo.component";
+import { MotoGPComponent } from "../MotoGP/moto-gp/moto-gp.component";
 
 
 @Component({
@@ -34,25 +35,16 @@ import { MeteoComponent } from "../Meteo/meteo/meteo.component";
   standalone: true,
   imports: [
     CommonModule,
-    NgbCarousel,
+    //NgbCarousel,
     MatTabGroup,
     MatTab,
-    MatGridList,
-    MatCard,
-    MatGridTile,
-    MatCardTitle,
-    MatCardHeader,
-    MatCardContent,
     MatTableModule,
     MatGridListModule,
-    MatFormField,
-    MatLabel,
-    MatSelect,
-    MatOption,
     ViewAgendaComponent,
     ViewLiensComponent,
     ViewPhotosComponent,
-    MeteoComponent
+    MeteoComponent,
+    MotoGPComponent
 ],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
@@ -60,10 +52,6 @@ import { MeteoComponent } from "../Meteo/meteo/meteo.component";
 
 export class AccueilComponent implements OnInit {
   private liensService = inject(LiensService);
-  /*public agendasService = inject(AgendasService);
-  public photosService = inject(PhotosService);
-  public joursService = inject(JoursService);
-  public evenementsService = inject(EvenementsService);*/
   private toolsService = inject(ToolsService);
 
   @ViewChild('ngcarousel', { static: true })
@@ -71,17 +59,17 @@ export class AccueilComponent implements OnInit {
   
   public isConnected: boolean = false;
   photoCourante = 0;
-  
   readonly pasPhotos = 8;
   
-
+/*
   private photosSubscription: Subscription | undefined;
   private articlesSubscription: Subscription | undefined;
   private actualitesSubscription: Subscription | undefined;
   private photosCarouselSubscription:  Subscription | undefined;
   private authSubscription: Subscription | undefined;
-  
-  //public links$: Observable<Lien[]> = this.liensService.links$;
+ 
+  public links$: Observable<Lien[]> = this.liensService.links$;
+  */
   
   // Liste des évènements
   public evenements: Evenement[] = [];
@@ -96,13 +84,11 @@ export class AccueilComponent implements OnInit {
   public agendas: Agenda[] = [];
 
   public dateCourante = new Date();
-  private evenementCourant: Evenement | undefined;
-  private jourCourant: Jour | undefined;
 
-  onglet1: string = "Accueil";
-  onglet2: string = "Agenda";
-  onglet3: string = "Photos";
-
+  onglet1: string = "MotoGP";
+  onglet2: string = "Accueil";
+  onglet3: string = "Agenda";
+  onglet4: string = "Photos";
 
   constructor() { }
 

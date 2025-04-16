@@ -4,5 +4,11 @@
           "secure": false,
           "changeOrigin": true,
           "logLevel": "debug"
+      },
+        "/api.micheleberardi.com": {
+          "target": "https://api.micheleberardi.com/racing/v1.0",
+          "secure": false,
+          "changeOrigin": true,
+          "logLevel": "debug"
       }
   }

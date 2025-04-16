@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabGroup } from '@angular/material/tabs';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatOption, MatSelect } from '@angular/material/select';
+import * as EXIF from 'exif-js';
 
 @Component({
   selector: 'app-view-photos',
@@ -57,6 +58,8 @@ export class ViewPhotosComponent implements OnInit {
   public photoCourante: number = 0;
   public pasPhotos: number = 4;
 
+  private image: ImageBitmap | undefined;
+
   constructor() {}
   
   ngOnInit(): void {
@@ -95,27 +98,68 @@ export class ViewPhotosComponent implements OnInit {
                       });
                     });
                   }
-
- 
                 } else {
                   this.jourCourant = undefined;
                 }
               })
             }
-          
           }
         });
     
+    }
+
+    onLoad(i: number) {
+      const img = new Image();
+      img.src = this.imageUrlList[i];
+  
+      img.onload = () => {
+        EXIF.getData(this.imageUrlList[i], () => {
+          const orientation = EXIF.getTag(img, 'Orientation');
+          this.oriente(img, orientation);
+        });
+      };
+    }
+
+    private oriente(img: HTMLImageElement, orientation: number) {
+      // Logique pour corriger l'orientation selon la valeur de 'orientation'
+      // Cela peut impliquer de dessiner l'image sur un canvas et de récupérer l'image corrigée
+      // Exemple simplifié :
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+  
+      switch (orientation) {
+        case 1:
+          // Normal
+          ctx?.drawImage(img, 0, 0);
+          break;
+        case 6:
+          // 90° rotation
+          canvas.width = img.height;
+          canvas.height = img.width;
+          ctx?.rotate(90 * Math.PI / 180);
+          ctx?.drawImage(img, 0, -img.height);
+          break;
+        case 8:
+          // -90° rotation
+          canvas.width = img.height;
+          canvas.height = img.width;
+          ctx?.rotate(-90 * Math.PI / 180);
+          ctx?.drawImage(img, -img.width, 0);
+          break;
+        // Ajoutez d'autres cas pour d'autres orientations si nécessaire
       }
-      onDecrementePhoto() {
-          this.photoCourante -= this.pasPhotos;
-          this.pageCourantePhoto = Math.ceil(this.photoCourante / this.pasPhotos); 
-        }
-      
-        onIncrementePhoto() {
-          this.photoCourante += this.pasPhotos;
-          this.pageCourantePhoto = Math.ceil(this.photoCourante / this.pasPhotos);
-        }
+  
+    }
+
+    onDecrementePhoto() {
+        this.photoCourante -= this.pasPhotos;
+        this.pageCourantePhoto = Math.ceil(this.photoCourante / this.pasPhotos); 
+      }
+    
+    onIncrementePhoto() {
+      this.photoCourante += this.pasPhotos;
+      this.pageCourantePhoto = Math.ceil(this.photoCourante / this.pasPhotos);
+    }
       
   onChangeEvenement(event: any) {
     this.evenementsService.getEvenement('/Evenements', event.value).subscribe((e: Evenement) => {

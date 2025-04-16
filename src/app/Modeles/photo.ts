@@ -5,6 +5,7 @@ export class Photo {
                 public nomAuteur?: string,
                 public jourId?: string,
                 public adresse?: string,
-                public heure?: Date)
+                public heure?: Date,
+                public orientation: string = "180deg")
             {}
         }

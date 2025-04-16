@@ -1,0 +1,72 @@
+<p>Moto GP {{saison.year}}</p>
+<p>{{epreuves.length}} épreuves courues.</p>
+<br>
+      <!--Liste déroulante des évènements-->
+    <div class="form-fields">
+        <mat-form-field>
+            <mat-label>Saisons</mat-label>
+            <mat-select style="height: 20px;" [(value)]="selectedYear" (selectionChange)="onChangeSaison($event)">
+                <mat-option></mat-option>
+                @for (s of saisons; track s) {
+                <mat-option [value]="s">{{s}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+
+    <table mat-table
+       [dataSource]="epreuves" multiTemplateDataRows
+       class="mat-elevation-z8">
+        @for (col of displayedColumns; track col; let i = $index) {
+            <ng-container matColumnDef="{{col}}">
+            <th mat-header-cell *matHeaderCellDef>{{titresColumns[i]}}</th>
+            <td mat-cell *matCellDef="let element">{{element[col]}}</td>
+            </ng-container>
+        }
+        <ng-container matColumnDef="expand">
+            <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+            <td mat-cell *matCellDef="let element">
+            <button
+                mat-icon-button
+                aria-label="expand row"
+                (click)="toggle(element); $event.stopPropagation()"
+                class="example-toggle-button"
+                [class.example-toggle-button-expanded]="isExpanded(element)">
+                <mat-icon>keyboard_arrow_down</mat-icon>     </button>
+            </td>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let element" [attr.colspan]="categories.length">
+            <div class="example-element-detail-wrapper"
+                [class.example-element-detail-wrapper-expanded]="isExpanded(element)">
+                <div class="example-element-detail">
+                    <div class="example-element-diagram">
+                        @for (cat of categories; track cat; let i = $index) {
+                            {{categories[i].name}}
+                            <button
+                            mat-button
+                            (click)="resultat(cat.id, element.id)">
+                            Voir les résultats
+                           </button>
+                           <br>
+                           @if (resultats.length && cat.id == resultats[$index].category_id) {
+                            <app-resultats [resultats]="resultats"></app-resultats>
+                           }
+                        }
+                    </div>
+                </div>
+            </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+            class="example-element-row"
+            [class.example-expanded-row]="isExpanded(element)"
+            (click)="toggle(element)">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        </table>
