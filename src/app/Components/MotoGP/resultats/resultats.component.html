@@ -1,3 +1,3 @@
 @for (resultat of resultats(); track $index) {
-    <p>{{$index + 1}} - {{resultat.rider_name}} - {{resultat.rider_surname}} - {{resultat.team_name}} </p>
+    <p>{{$index + 1}} - {{resultat.rider_full_name}} ({{resultat.rider_country_iso}}) - {{resultat.team_name}} </p>
 }

@@ -1,0 +1,7 @@
+@if (isVisible) {
+    @for (pilote of pilotes(); track $index) {
+        <p>{{pilote.position}} - {{pilote.rider_full_name}} - {{pilote.points}} - {{pilote.constructor_name}}</p>
+    }
+    <button mat-button (click)="onClose()">Fermer</button>
+    <br>
+}

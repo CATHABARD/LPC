@@ -97,4 +97,8 @@ export class FrameComponent implements OnInit, OnDestroy {
   onAddAgenda() {
     this.router.navigate(['addAgenda']);
   }
+
+  onGetTeams() { 
+    this.router.navigate(['app-view-teams']);
+  }
 }

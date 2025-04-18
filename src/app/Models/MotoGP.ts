@@ -154,8 +154,8 @@ export class Resultatat{
         result_id: string = "",
         position: number = 0,
         rider_id: string = "",
-        rider_full_name: string = "",
-        rider_country_iso: string = "",
+        public rider_full_name: string = "",
+        public rider_country_iso: string = "",
         rider_country_name: string = "",
         rider_region_iso: string = "",
         rider_legacy_id: number = 0,
@@ -235,3 +235,18 @@ export class Resultatat{
     {}
 }
 
+export class Pilote {
+    constructor(
+        classification_id: string = "",
+        public constructor_name: string = "",
+        md5: string = "",
+        public points: number = 0,
+        public position: number = 0,
+        rider_country_iso: string = "",
+        public rider_full_name: string = "",
+        team_color: string = "",
+        text_color: string = "",
+        year: string = "",
+        public categoryid: string = "")
+    {}
+}

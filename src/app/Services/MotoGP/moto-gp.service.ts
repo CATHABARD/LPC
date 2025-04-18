@@ -15,8 +15,9 @@ export class MotoGPService {
   urlCategories =       "https://api.micheleberardi.com/racing/v1.0/motogp-category?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=";
   urlsessions =         "https://api.micheleberardi.com/racing/v1.0/motogp-sessions?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=";
   urlSprint =           "https://api.micheleberardi.com/racing/v1.0/motogp-sessions-spr?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=";
-  urlEvenement =        'https://api.micheleberardi.com/racing/v1.0/motogp-files?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&eventid=726dbaae-6b5a-49b9-982a-c4f46cfed0a5&categoryid=e8c110ad-64aa-4e8e-8a86-f2f152f6a942';
   urlResultats =        "https://api.micheleberardi.com/racing/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&eventid=";  
+  urlTeams =            "https://api.micheleberardi.com/racing/v1.0/motogp-calendar?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=";
+  urlPilotes =         "https://api.micheleberardi.com/racing/v1.0/motogp-world-standing-riders?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=";
   
   constructor() { }
 
@@ -30,8 +31,8 @@ export class MotoGPService {
     return this.http.get<Epreuve[]>(query);
   }
 
-  getEpreuvesFutures(idEvenement: string): Observable<EpreuveFutures> {
-    var query = this.urlEpreuvesFutures + idEvenement;
+  getEpreuvesFutures(idEvenement: string, idCategorie: string): Observable<EpreuveFutures> {
+    var query = this.urlEpreuvesFutures + idEvenement + "&categoryid=" + idCategorie;
     return this.http.get<EpreuveFutures>(query);
   }
 
@@ -51,10 +52,16 @@ export class MotoGPService {
   }
 
   getResultats(year: number, idSession: string, idEpreuve: string): Observable<Resultatat[]> {
-    var query = this.urlResultats + idEpreuve + "&year=2024" + "&session=" + idSession;
+    var query = this.urlResultats + idEpreuve + "&year=" + year + "&session=" + idSession;
     return this.http.get<Resultatat[]>(query);
   }
 
+  getTeams(): Observable<any[]> {
+    return this.http.get<any[]>(this.urlTeams);
+  }
 
+  getPilotes(year: string, categoryid: string): Observable<any[]> {
+    return this.http.get<any[]>(this.urlPilotes + year + "&categoryid=" + categoryid);
+  }
 }
 

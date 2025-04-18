@@ -7,6 +7,9 @@ import { ViewLiensComponent } from './Components/Liens/ViewLiens/view-liens.comp
 import { AddAgendaComponent } from './Components/agenda/AddAgenda/add-agenda.component';
 import { MotoGPComponent } from './Components/MotoGP/moto-gp/moto-gp.component';
 import { ResultatsComponent } from './Components/MotoGP/resultats/resultats.component';
+import { ViewTeamsComponent } from './Components/MotoGP/Teams/Teams/view-teams/view-teams.component';
+import { ViewpilotesComponent } from './Components/MotoGP/Pilotes/ViewPilotes/viewpilotes/viewpilotes.component';
+import { AddPiloteComponent } from './Components/MotoGP/Pilotes/AddPilote/add-pilote/add-pilote.component';
 
 export const routes: Routes = [
     { path: 'frame', component: FrameComponent },
@@ -17,5 +20,8 @@ export const routes: Routes = [
     { path: 'addAgenda', component: AddAgendaComponent},
     { path: 'app-moto-gp', component: MotoGPComponent },
     { path: 'app-resultats', component: ResultatsComponent},
+    { path: 'app-view-teams', component: ViewTeamsComponent},
+    { path: 'app-viewpilotes', component: ViewpilotesComponent},
+    { path: 'app-addpilote', component: AddPiloteComponent},
     { path: '**', component: AccueilComponent }
   ];

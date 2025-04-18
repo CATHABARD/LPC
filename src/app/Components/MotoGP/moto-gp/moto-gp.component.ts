@@ -5,11 +5,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
-import { Saison } from '../../../Models/MotoGP';
+import { Pilote, Saison } from '../../../Models/MotoGP';
 import { Categorie, Epreuve, Resultatat, Sprint } from '../../../Models/MotoGP';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { ResultatsComponent } from '../resultats/resultats.component';
+import { ViewpilotesComponent} from '../Pilotes/ViewPilotes/viewpilotes/viewpilotes.component';
 
 @Component({
   selector: 'app-moto-gp',
@@ -24,7 +25,8 @@ import { ResultatsComponent } from '../resultats/resultats.component';
             MatSelect,
             MatOption,
             MatIcon,
-            ResultatsComponent
+            ResultatsComponent,
+            ViewpilotesComponent
   ],
   templateUrl: './moto-gp.component.html',
   styleUrl: './moto-gp.component.css'
@@ -42,6 +44,7 @@ export class MotoGPComponent implements OnInit {
   public sessions: any[] = [];
   public sessionsSprint: Sprint[] = [];
   public resultats: Resultatat[] = [];
+  public pilotes: Pilote[] = [];
   
   public titresColumns: string[] = ['Du', 'Au', 'Circuit', 'Pays'];
   public displayedColumns: string[] = ['date_start', 'date_end', 'circuit_name', 'country_name'];
@@ -49,10 +52,11 @@ export class MotoGPComponent implements OnInit {
 
   ngOnInit(): void {
 
-    while (this.courant <= new Date().getFullYear()) {
+   while (this.courant <= new Date().getFullYear()) {
       this.saisons.push(this.courant++);
     }
     this.selectedYear = this.saisons[this.saisons.length - 1];
+    
     this.motoGP.getSaison(this.selectedYear).subscribe({
       next: (data) => {
         this.saison = data[0]
@@ -61,6 +65,7 @@ export class MotoGPComponent implements OnInit {
         console.error('Erreur lors de la récupération de la saison:\r', error),
       complete: () => {
         console.log('Saison récupérée avec succès! ' + this.saison.year),
+        
         this.motoGP.getEpreuvesSaison(this.saison.year).subscribe({
           next: (e) => {
             this.epreuves = e
@@ -68,15 +73,24 @@ export class MotoGPComponent implements OnInit {
           error: (error) => 
             console.error('Erreur lors de la récupération des épreuves:\r', error),
           complete: () => {
-            console.log('Epreuves récupérées avec succès! ')
+            console.log('Epreuves récupérées avec succès! '),
+            this.epreuves.sort((a, b) => a.date_start.localeCompare(b.date_start)),
+            this.epreuves.forEach((epreuve) => {
+              epreuve.date_start = new Date(epreuve.date_start).toLocaleDateString('fr-FR'),
+              epreuve.date_end = new Date(epreuve.date_end).toLocaleDateString('fr-FR')
+            });
           }
-        })
+        });
       }
     });
   }
 
   onChangeSaison(event: any) {
     this.epreuves = [];
+    this.sessions = [];
+    this.resultats = [];
+    this.pilotes = [];
+
     this.motoGP.getSaison(event.value).subscribe({
       next: (data) => {
         this.saison = data[0] 
@@ -92,10 +106,12 @@ export class MotoGPComponent implements OnInit {
             console.error('Erreur lors de la récupération des épreuves:\r', error),
         complete: () => {
             this.epreuves.sort((a, b) => a.date_start.localeCompare(b.date_start)),
-            console.log('Epreuves récupérées avec succès! ' + this.epreuves.length)
+            this.epreuves.forEach((epreuve) => {
+              epreuve.date_start = new Date(epreuve.date_start).toLocaleDateString('fr-FR'),
+              epreuve.date_end = new Date(epreuve.date_end).toLocaleDateString('fr-FR')
+            });
             this.motoGP.getCategories(this.saison.year).subscribe({
               next: (data) => {
-              console.log('Categories récupérées avec succès! ' + data.length)
               this.categories = data;
             },
             error: (error) => 
@@ -123,11 +139,11 @@ export class MotoGPComponent implements OnInit {
   resultat(idCategorie: string, idElement: string) { 
     this.sessions = [];
     this.resultats = [];
-    console.log('Resultats de la saison ' + this.resultats.length);
+    this.pilotes = [];
+
     this.motoGP.getSessions(this.saison.year, idCategorie, idElement).subscribe({
       next: (data) => {
         this.sessions = data;
-        console.log('Sessions récupérées avec succès! ' + this.sessions.length)
       },
       error: (error) => 
         console.error('Erreur lors de la récupération des sessions:\r', error),
@@ -135,8 +151,7 @@ export class MotoGPComponent implements OnInit {
         console.log('Sessions récupérées avec succès! '),
         this.motoGP.getResultats( this.saison.year, this.sessions[0].id, idElement).subscribe({
           next: (data) => {
-            this.resultats = data,
-            console.log('Resultats récupérés avec succès! ' + this.resultats.length)
+            this.resultats = data
           },
           error: (error) => 
             console.error('Erreur lors de la récupération des resultats:\r', error),
@@ -146,74 +161,36 @@ export class MotoGPComponent implements OnInit {
         });
       }
     });
+  }
 
-/*
-    this.motoGP.getEpreuvesFutures(idElement).subscribe({
+  onClassementPilotes(idCategorie: string) {
+    this.sessions = [];
+    this.resultats = [];
+    this.pilotes = [];
+
+    this.motoGP.getPilotes(this.saison.year.toString(), idCategorie).subscribe({
       next: (data) => {
-        console.log('Sessions récupérées avec succès! ' + data.calendar.length);   
-      }
-    });
-    this.motoGP.getSessionsSprint(this.saison.year).subscribe({
-      next: (data) => {
-        this.sessionsSprint = data;
-        console.log('Sessions récupérées avec succès! ' + this.sessionsSprint.length)
+        this.pilotes = data;
       },
       error: (error) => 
         console.error('Erreur lors de la récupération des sessions:\r', error),
       complete: () => {
-        console.log('Sessions récupérées avec succès! ')
+        console.log('Sessions récupérées avec succès! '),
+        this.motoGP.getPilotes( this.saison.year.toString(), idCategorie).subscribe({
+          next: (data) => {
+            this.pilotes = data
+          },
+          error: (error) => 
+            console.error('Erreur lors de la récupération des resultats:\r', error),
+          complete: () => {
+            console.log('Resultats récupérés avec succès! ')
+            this.pilotes.forEach((pilote) => {
+              pilote.categoryid = idCategorie
+            });
+          }
+        });
       }
-    });*/
+    });
   }
-
 }
 
-/*
-
-motogp-full-results": {
-"post": {
-"tags": [
-"API MOTOGP NEW"
-],
-"parameters": [
-{
-"name": "token",
-"in": "query",
-"description": "token",
-"required": true,
-"type": "string",
-"example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
-},
-{
-"name": "eventid",
-"in": "query",
-"description": "you can select event id from api motogp-events",
-"required": true,
-"type": "string",
-"example": "8ed52491-e1aa-49a9-8d70-f1c1f8dd3090"
-},
-{
-"name": "year",
-"in": "query",
-"description": "you can select category id from api motogp-category",
-"required": true,
-"type": "string",
-"example": "2024"
-},
-{
-"name": "session",
-"in": "query",
-"description": "you can select session type RAC FP1 FP2 FP3 FP4 Q1 Q2 WUP SPR",
-"required": true,
-"type": "string",
-"example": "af960ae0-845e-4fac-a431-4a7ea6c7d128"
-}
-],
-"summary": "Returns List of Results",
-"responses": {
-"200": {
-"description": "OK"
-}
-}
-}
-*/

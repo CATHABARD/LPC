@@ -14,6 +14,19 @@
         </mat-form-field>
     </div>
 
+    @for (cat of categories; track cat; let i = $index) {
+       {{categories[i].name}}
+       <button
+       mat-button
+       (click)="onClassementPilotes(cat.id)">
+       classement
+      </button>
+      <br>
+      @if (pilotes.length > 0 && pilotes[i].categoryid == cat.id) {
+       <app-viewpilotes [pilotes]="pilotes"></app-viewpilotes>
+      }
+   }
+
 
     <table mat-table
        [dataSource]="epreuves" multiTemplateDataRows
@@ -49,13 +62,13 @@
                             <button
                             mat-button
                             (click)="resultat(cat.id, element.id)">
-                            Voir les résultats
+                            Résultats
                            </button>
                            <br>
                            @if (resultats.length && cat.id == resultats[$index].category_id) {
                             <app-resultats [resultats]="resultats"></app-resultats>
                            }
-                        }
+                       }
                     </div>
                 </div>
             </div>
