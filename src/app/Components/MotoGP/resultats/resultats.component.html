@@ -1,3 +1,7 @@
-@for (resultat of resultats(); track $index) {
+@if (isVisible) {
+    @for (resultat of resultats(); track $index) {
     <p>{{$index + 1}} - {{resultat.rider_full_name}} ({{resultat.rider_country_iso}}) - {{resultat.team_name}} </p>
+    }
+    <button mat-button (click)="onClose()">Fermer</button>
+    <br>
 }

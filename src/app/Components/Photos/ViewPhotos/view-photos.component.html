@@ -34,7 +34,7 @@
         </mat-form-field>
   
       <!--Liste déroulante des jours-->
-      <mat-form-field>
+      <mat-form-field style="margin-left: 10px;">
           <mat-label>Jours</mat-label>
           <mat-select style="height: 20px;" (selectionChange)="onChangeJour($event)">
             <div *ngFor="let j of jours; let i = index">
@@ -44,7 +44,7 @@
     </mat-form-field>
   
   </div>
-  <div *ngIf="photos.length > 0">
+  <div *ngIf="photos.length > 0" style="margin-left: 20px;">
     <button mat-button (click)="onDecrementePhoto()" *ngIf="pageCourantePhoto >= 1"><<</button>
     <button mat-button *ngIf="pageCourantePhoto < 1" disabled><<</button>
     Page {{pageCourantePhoto + 1}} sur {{nbPagesPhotos}}
@@ -60,7 +60,7 @@
             </mat-card-header> 
             <mat-card-content *ngIf="p.commentaire != ''"> 
               <div style="max-width: 10%;">
-                <img mat-card-image [src]=imageUrlList[i] (load)="onLoad(i)" alt="Photo">
+                <img mat-card-image [src]=imageUrlList[i] (load)="onLoad(i)" alt="Photo" style="max-width: 160px;">
               </div>
             </mat-card-content>
             <mat-card-content>

@@ -12,6 +12,7 @@ export class Meteo {
         public windSpeed10m: number = 0,
         public windDirection10m: number = 0,
         public windGusts10m: number = 0,
-        public icone: string = ""
+        public icone: string = "",
+        public isVisible: boolean = false
     ){}
 }

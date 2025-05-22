@@ -86,7 +86,6 @@ export class ViewPhotosComponent implements OnInit {
                               const reader = new FileReader();
                               reader.onload = () => {
                                 if(reader.result != null) {
-                                  //P.commentaire = reader.result as string;
                                   this.imageUrlList.push(reader.result.toString()); // Convertit le blob en URL
                                 }
                               };
@@ -95,6 +94,7 @@ export class ViewPhotosComponent implements OnInit {
                           }
                         }
                       });
+                      this.onChangeJour(this.jourCourant);
                     });
                   }
                 } else {

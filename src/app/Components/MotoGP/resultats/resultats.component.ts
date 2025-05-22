@@ -10,9 +10,13 @@ import { Resultatat } from '../../../Models/MotoGP';
 })
 export class ResultatsComponent {
   resultats = input<Resultatat[]>({} as Resultatat[]);
-    
+  public isVisible = false;
+ 
   constructor() {
-
+    this.isVisible = true;
   }
 
+  onClose() {
+    this.isVisible = false;
+  }
 }

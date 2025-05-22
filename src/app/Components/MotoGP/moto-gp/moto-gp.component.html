@@ -1,4 +1,8 @@
-<p>Moto GP {{saison.year}}</p>
+<p>Moto GP 
+@if (saison.year) {
+    {{saison.year}}
+}
+</p>
 <p>{{epreuves.length}} épreuves courues.</p>
 <br>
       <!--Liste déroulante des évènements-->
@@ -46,8 +50,9 @@
                 (click)="toggle(element); $event.stopPropagation()"
                 class="example-toggle-button"
                 [class.example-toggle-button-expanded]="isExpanded(element)">
-                <mat-icon>keyboard_arrow_down</mat-icon>     </button>
-            </td>
+                <mat-icon>keyboard_arrow_down</mat-icon>     
+            </button>
+        </td>
         </ng-container>
 
         <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->

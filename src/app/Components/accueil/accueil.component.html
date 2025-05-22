@@ -17,21 +17,26 @@
         </ng-template>
       </ngb-carousel>
     </td>
-  
-  <!--Onglet Meteo-->
-  <mat-tab label={{onglet1}}>
-    <app-moto-gp></app-moto-gp>
-  </mat-tab>
-  <mat-tab label={{onglet2}}>    
+
+    <!--Onglet Meteo-->
+  <mat-tab label={{onglet1}}>    
+    <br/>
     <app-view-liens></app-view-liens>
     <app-meteo></app-meteo>
   </mat-tab>
+    <!--Onglet MotoGP-->
+  <mat-tab label={{onglet2}}>
+    <br/>
+    <app-moto-gp></app-moto-gp>
+  </mat-tab>
   <!--Onglet Agenda-->
   <mat-tab label={{onglet3}}>
+    <br/>
     <app-view-agenda></app-view-agenda>
   </mat-tab>
   <!--Onglet Photos-->
   <mat-tab label={{onglet4}}>
+    <br/>
     <app-view-photos></app-view-photos>
   </mat-tab>
 </mat-tab-group>

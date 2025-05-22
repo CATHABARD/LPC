@@ -72,8 +72,8 @@ export class AccueilComponent implements OnInit {
 
   public dateCourante = new Date();
 
-  onglet1: string = "MotoGP";
-  onglet2: string = "Accueil";
+  onglet1: string = "Accueil";
+  onglet2: string = "MotoGP";
   onglet3: string = "Agenda";
   onglet4: string = "Photos";
 

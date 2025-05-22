@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Saison } from '../../Models/MotoGP';
@@ -9,6 +9,7 @@ import { Categorie, Epreuve, EpreuveFutures, Resultatat, Sprint } from '../../Mo
 })
 export class MotoGPService {
   http: HttpClient = inject(HttpClient);
+  
   urlSaison =           "https://api.micheleberardi.com/racing/v1.0/motogp-season?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=";
   urlEpreuves =         "https://api.micheleberardi.com/racing/v1.0/motogp-events?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=";
   urlEpreuvesFutures =  "https://api.micheleberardi.com/racing/v1.0/motogp-files?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&eventid=";
@@ -17,13 +18,11 @@ export class MotoGPService {
   urlSprint =           "https://api.micheleberardi.com/racing/v1.0/motogp-sessions-spr?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=";
   urlResultats =        "https://api.micheleberardi.com/racing/v1.0/motogp-full-results?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&eventid=";  
   urlTeams =            "https://api.micheleberardi.com/racing/v1.0/motogp-calendar?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=";
-  urlPilotes =         "https://api.micheleberardi.com/racing/v1.0/motogp-world-standing-riders?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=";
+  urlPilotes =          "https://api.micheleberardi.com/racing/v1.0/motogp-world-standing-riders?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9&year=";
   
-  constructor() { }
-
   getSaison(year: number): Observable<Saison[]> {
     var query = this.urlSaison + year;
-    return this.http.get<Saison[]>(query);
+    return this.http.get<Saison[]>(query/*, { headers: { "Host": "api.micheleberardi.com" }}*/);
   }
 
   getEpreuvesSaison(year: number): Observable<Epreuve[]> {
