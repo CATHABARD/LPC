@@ -94,6 +94,10 @@ export class FrameComponent implements OnInit, OnDestroy {
     this.router.navigate(['addLien']);
   }
 
+  onAddChaine() {
+    alert("ajouter une chaine")
+  }
+
   onAddAgenda() {
     this.router.navigate(['addAgenda']);
   }

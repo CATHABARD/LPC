@@ -15,6 +15,7 @@ import { ViewLiensComponent } from '../../Components/Liens/ViewLiens/view-liens.
 import { ViewPhotosComponent } from '../../Components/Photos/ViewPhotos/view-photos.component';
 import { MeteoComponent } from "../../Components/Meteo/meteo/meteo.component";
 import { MotoGPComponent } from "../MotoGP/moto-gp/moto-gp.component";
+import { ViewChainesComponent } from '../Chaines/view-chaines/view-chaines.component';
 
 
 @Component({
@@ -31,7 +32,8 @@ import { MotoGPComponent } from "../MotoGP/moto-gp/moto-gp.component";
     ViewLiensComponent,
     ViewPhotosComponent,
     MeteoComponent,
-    MotoGPComponent
+    MotoGPComponent,
+    ViewChainesComponent
 ],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
@@ -72,6 +74,7 @@ export class AccueilComponent implements OnInit {
 
   public dateCourante = new Date();
 
+  onglet0: string = "TV";
   onglet1: string = "Accueil";
   onglet2: string = "MotoGP";
   onglet3: string = "Agenda";

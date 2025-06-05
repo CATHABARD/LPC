@@ -1,1 +1,14 @@
-<p>addLien works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field style="width: 550px;">
+        <mat-label>Adresse</mat-label>
+        <input matInput id="adresse" matInput formControlName="adresse">
+    </mat-form-field>
+    
+    <mat-form-field style="width: 550px; margin-left: 15px;">
+        <mat-label>Description</mat-label>
+        <textarea id="description" matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <br/>
+    
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Valider</button>
+</form>

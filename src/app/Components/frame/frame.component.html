@@ -7,15 +7,18 @@
     <div class="liste-liens">
       <!--Menu gauche-->
       <div *ngIf="selectedOnglet == 0">
-        <button mat-raised-button (click)="onAddLien()" color="primary">Ajouter un lien</button>
+        <button mat-raised-button (click)="onAddChaine()" color="primary">Ajouter une chaine</button>
       </div>
       <div *ngIf="selectedOnglet == 1">
-        <button mat-raised-button (click)="onGetTeams()" color="primary">Teams</button>
+        <button mat-raised-button (click)="onAddLien()" color="primary">Ajouter un lien</button>
       </div>
       <div *ngIf="selectedOnglet == 2">
-        <button mat-raised-button (click)="onGetTeams()" color="primary">Evènements</button>
+        <button mat-raised-button (click)="onGetTeams()" color="primary">Teams</button>
       </div>
       <div *ngIf="selectedOnglet == 3">
+        <button mat-raised-button (click)="onGetTeams()" color="primary">Evènements</button>
+      </div>
+      <div *ngIf="selectedOnglet == 4">
         <button  mat-raised-button (click)="onAddAgenda()" color="primary">Ajouter une date à l'agenda</button>
       </div>
     </div>

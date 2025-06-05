@@ -4,7 +4,7 @@ export class Lien {
         public Idlien?: string,
         public adresse?: string,
         public texte?: string,
-        public iduser: number = 0,
+        public iduser: string = '',
         public Status: number = 0)
         {}
 }
